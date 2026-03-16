@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* HydroTracker Futuristic Design System - Dark Mode First */
+    
+    /* Base Colors - Deep Navy & Charcoal Foundations */
+    --background: 220 72% 11%;        /* Deep Navy #071430 */
+    --background-elevated: 220 50% 11%;  /* Charcoal #0E1A2B */
+    --foreground: 210 40% 98%;        /* Crisp White Text */
+    
+    /* Glass Frost & Overlay */
+    --glass: 0 0% 100% / 0.04;        /* Subtle frost overlay */
+    --glass-border: 0 0% 100% / 0.1;  /* Glass edge definition */
+    
+    /* Energy Type Neon Colors */
+    --primary: 174 100% 45%;          /* Hydro - Electric Teal #00E6D0 */
+    --primary-foreground: 220 72% 11%;
+    --primary-glow: 174 100% 70%;     /* Lighter teal for glows */
+    
+    --secondary: 203 100% 61%;        /* Wind - Electric Blue #3AB7FF */
+    --secondary-foreground: 220 72% 11%;
+    --secondary-glow: 203 100% 75%;
+    
+    --accent: 82 100% 71%;            /* Lime Accent #C7FF6B */
+    --accent-foreground: 220 72% 11%;
+    --accent-glow: 82 100% 85%;
+    
+    --solar: 45 100% 62%;             /* Solar - Amber #FFD23F */
+    --solar-foreground: 220 72% 11%;
+    --solar-glow: 45 100% 75%;
+    
+    --thermal: 0 100% 71%;            /* Thermal - Red #FF6B6B */
+    --thermal-foreground: 220 72% 11%;
+    --thermal-glow: 0 100% 85%;
+    
+    /* Status Colors */
+    --success: 174 100% 45%;          /* Teal for operational */
+    --warning: 45 100% 60%;           /* Amber for construction */
+    --destructive: 0 100% 71%;        /* Red #FF6B6B for errors */
+    --destructive-foreground: 210 40% 98%;
+    --info: 203 100% 61%;             /* Blue for planned */
+    
+    /* UI Elements */
+    --card: 220 50% 11%;              /* Charcoal cards */
+    --card-foreground: 210 40% 98%;
+    --card-hover: 220 50% 14%;        /* Slightly lighter on hover */
+    
+    --popover: 220 50% 11%;
+    --popover-foreground: 210 40% 98%;
+    
+    --muted: 220 50% 20%;
+    --muted-foreground: 210 20% 65%;
+    
+    --border: 0 0% 100% / 0.08;       /* Subtle borders */
+    --input: 0 0% 100% / 0.06;        /* Input backgrounds */
+    --ring: 174 100% 45%;             /* Focus rings use primary teal */
+    
+    --radius: 0.75rem;                /* 12px default radius */
+    --radius-sm: 0.5rem;              /* 8px small */
+    --radius-lg: 1.5rem;              /* 24px large */
+    
+    /* Gradients - Water & Energy Flow */
+    --gradient-primary: linear-gradient(135deg, hsl(174 100% 45%) 0%, hsl(203 100% 61%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 72% 11%) 0%, hsl(203 100% 20%) 50%, hsl(174 100% 20%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(174 100% 45% / 0.15) 0%, transparent 70%);
+    
+    /* Shadows - Cool Tinted Elevation */
+    --shadow-sm: 0 2px 8px hsl(203 100% 10% / 0.3);
+    --shadow-md: 0 6px 24px hsl(203 100% 10% / 0.4);
+    --shadow-lg: 0 12px 48px hsl(203 100% 10% / 0.5);
+    --shadow-glow: 0 0 30px hsl(174 100% 45% / 0.3);
+    --shadow-glow-accent: 0 0 20px hsl(82 100% 71% / 0.25);
+    
+    /* Animation Timings */
+    --transition-fast: 140ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Spacing Scale - 8px base */
+    --spacing-1: 0.5rem;   /* 8px */
+    --spacing-2: 1rem;     /* 16px */
+    --spacing-3: 1.5rem;   /* 24px */
+    --spacing-4: 2rem;     /* 32px */
+    --spacing-6: 3rem;     /* 48px */
+    --spacing-8: 4rem;     /* 64px */
+  }
+
+  .light {
+    /* Light mode variant (visual inversion) */
+    --background: 210 40% 98%;
+    --background-elevated: 0 0% 100%;
+    --foreground: 220 72% 11%;
+    
+    --glass: 220 72% 11% / 0.04;
+    --glass-border: 220 72% 11% / 0.1;
+    
+    --primary: 174 100% 35%;
+    --primary-foreground: 210 40% 98%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 72% 11%;
+    --card-hover: 210 40% 96%;
+    
+    --border: 220 72% 11% / 0.1;
+    --shadow-md: 0 6px 24px hsl(220 72% 11% / 0.08);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /* Futuristic Glass Effect Utilities */
+  .glass-panel {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl;
+  }
+  
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-xl shadow-lg transition-all duration-300;
+  }
+  
+  .glass-card:hover {
+    @apply bg-white/[0.06] border-white/20 shadow-xl;
+    box-shadow: 0 0 30px hsl(174 100% 45% / 0.2);
+  }
+  
+  /* Neon Glow Effects */
+  .glow-teal {
+    box-shadow: 0 0 20px hsl(174 100% 45% / 0.4);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 20px hsl(203 100% 61% / 0.4);
+  }
+  
+  .glow-lime {
+    box-shadow: 0 0 15px hsl(82 100% 71% / 0.3);
+  }
+  
+  /* Water Flow Background Texture */
+  .water-texture {
+    background-image: 
+      radial-gradient(circle at 20% 30%, hsl(174 100% 45% / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, hsl(203 100% 61% / 0.03) 0%, transparent 50%);
+  }
+  
+  /* Topographic Pattern (subtle) */
+  .topo-pattern {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 100px,
+        hsl(174 100% 45% / 0.02) 100px,
+        hsl(174 100% 45% / 0.02) 101px
+      );
+  }
+}
